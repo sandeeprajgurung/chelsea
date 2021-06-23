@@ -6,7 +6,8 @@
         private $password = 'root';
         private $conn;
 
-        public function connection() {
+        public function connection(): PDO
+        {
             $this->conn = null;
 
             try {
