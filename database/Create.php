@@ -7,7 +7,6 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
 include_once '../config/Database.php';
-
 include_once 'tables/tags.php';
 include_once 'tables/news.php';
 

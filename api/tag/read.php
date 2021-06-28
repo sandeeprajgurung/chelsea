@@ -1,6 +1,6 @@
 <?php
-include_once '../partials/display_errors.php';
-include_once '../headers/GET.php';
+include_once '../config/partials/display_errors.php';
+include_once '../config/headers/GET.php';
 include_once '../../config/Database.php';
 include_once '../../models/Tag.php';
 
