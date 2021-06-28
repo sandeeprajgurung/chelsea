@@ -1,9 +1,9 @@
 <?php
 
-class Tags
+class Categories
 {
     private $conn;
-    private $table_name = 'tags';
+    private $table_name = 'categories';
 
     public function __construct($db)
     {

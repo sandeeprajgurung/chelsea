@@ -1,9 +1,9 @@
 <?php
 
-class News
+class Articles
 {
     private $conn;
-    private $table_name = 'news';
+    private $table_name = 'articles';
 
     public function __construct($db)
     {
@@ -28,18 +28,17 @@ class News
     {
         $result = $this->addSql(
             "CREATE TABLE IF NOT EXISTS $this->table_name (
-                id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                heading VARCHAR(30) NOT NULL,
-                content VARCHAR(30) NOT NULL,
-                tag_id INT(6) UNSIGNED NOT NULL,
-                reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                INDEX tag_id (tag_id),
-                FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE ON UPDATE CASCADE
+                `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                `title` VARCHAR(100) NOT NULL,
+                `content` LONGTEXT NOT NULL,
+                `featured_image` BLOB NOT NULL,
+                `slug` VARCHAR(100) NOT NULL,
+                `reg_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )",
         );
 
         if ($result) {
-            echo "$this->table_name is created.";
+            echo "$this->table_name is created.".PHP_EOL;
         } else {
             echo "Noting to migrate for $this->table_name";
         }

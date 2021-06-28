@@ -1,9 +1,9 @@
 <?php
 
-class Tags
+class Users_articles
 {
     private $conn;
-    private $table_name = 'tags';
+    private $table_name = 'users_articles';
 
     public function __construct($db)
     {
@@ -28,9 +28,14 @@ class Tags
     {
         $result = $this->addSql(
             "CREATE TABLE IF NOT EXISTS $this->table_name (
-                `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                `name` VARCHAR(32) NOT NULL,
-                `reg_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                `id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                `user_id` INT(11) UNSIGNED NOT NULL,
+                `article_id` INT(11) UNSIGNED NOT NULL,
+                `reg_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                INDEX user_id (user_id),
+                FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+                INDEX article_id (article_id),
+                FOREIGN KEY (article_id) REFERENCES articles(id) ON DELETE CASCADE ON UPDATE CASCADE
             )",
         );
 
