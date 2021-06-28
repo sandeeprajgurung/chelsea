@@ -27,7 +27,7 @@ class Tag
         $this->name = htmlspecialchars(strip_tags($this->name));
         $statement->bindParam(':name', $this->name);
 
-        if($statement->execute()) {
+        if ($statement->execute()) {
             return true;
         }
 
@@ -40,7 +40,7 @@ class Tag
         $query = 'SELECT * FROM  ' . $this->table . '';
         $statement = $this->conn->prepare($query);
 
-        if($statement->execute()) {
+        if ($statement->execute()) {
             return $statement;
         }
 
@@ -48,9 +48,23 @@ class Tag
         return false;
     }
 
-    public function update()
+    public function update(): bool
     {
+        $query = 'UPDATE ' . $this->table . ' SET name = :name WHERE id = :id';
+        $statement = $this->conn->prepare($query);
 
+        $this->id = htmlspecialchars(strip_tags($this->id));
+        $this->name = htmlspecialchars(strip_tags($this->name));
+
+        $statement->bindParam(':id', $this->id);
+        $statement->bindParam(':name', $this->name);
+
+        if ($statement->execute()) {
+            return true;
+        }
+
+        printf("Error: %s.\n", $statement->error);
+        return false;
     }
 
     public function destroy(): bool
@@ -61,7 +75,7 @@ class Tag
         $this->id = htmlspecialchars(strip_tags($this->id));
         $statement->bindParam(':id', $this->id);
 
-        if($statement->execute()) {
+        if ($statement->execute()) {
             return true;
         }
 
