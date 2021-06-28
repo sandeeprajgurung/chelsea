@@ -7,6 +7,9 @@ class Tag
     /** @var string */
     private $table;
 
+    /** @var int */
+    public $id;
+
     /** @var string */
     public $name;
 
@@ -32,7 +35,7 @@ class Tag
         return false;
     }
 
-    public function read()
+    public function read(): object
     {
         $query = 'SELECT * FROM  ' . $this->table . '';
         $statement = $this->conn->prepare($query);
@@ -50,8 +53,19 @@ class Tag
 
     }
 
-    public function destroy()
+    public function destroy(): bool
     {
+        $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+        $statement = $this->conn->prepare($query);
 
+        $this->id = htmlspecialchars(strip_tags($this->id));
+        $statement->bindParam(':id', $this->id);
+
+        if($statement->execute()) {
+            return true;
+        }
+
+        printf("Error: %s.\n", $statement->error);
+        return false;
     }
 }

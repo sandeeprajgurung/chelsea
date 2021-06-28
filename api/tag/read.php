@@ -10,13 +10,11 @@ header('Access-Control-Allow-Methods: GET');
 include_once '../../config/Database.php';
 include_once '../../models/Tag.php';
 
-
 $database = new Database;
 $conn = $database->connection();
 
 $table_name = 'tags';
 $tag = new Tag($conn, $table_name);
-
 $result = $tag->read();
 $num = $result->rowCount();
 
