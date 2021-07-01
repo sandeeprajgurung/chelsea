@@ -31,7 +31,7 @@ class Articles
                 `id` INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 `title` VARCHAR(100) NOT NULL,
                 `content` LONGTEXT NOT NULL,
-                `featured_image` BLOB NOT NULL,
+                `featured_image` VARCHAR(100) NOT NULL,
                 `slug` VARCHAR(100) NOT NULL,
                 `reg_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
             )",
