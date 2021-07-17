@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-family: "Inter", "sans-serif";
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6c757d;
+  background-color: #e9ecef;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@import "global";
+@import "navbar";
+
+.page-content {
+  margin-left: 15.625rem;
+  min-height: 100vh;
+  min-width: 100vw;
+  transition: margin 0.25s ease-out;
+
+  @media (min-width: 768px) {
+    min-width: 0;
+    width: calc(100% - 250px);
+  }
+
+  @media (max-width: 767.98px) {
+    margin-left: 0;
+  }
+}

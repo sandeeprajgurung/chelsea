@@ -1,0 +1,50 @@
+$sizes: 12;
+
+@mixin margin-classes {
+  @for $i from 1 through $sizes {
+     $margin: $i * 0.25rem;
+    .m-a {margin: auto;}
+    .m-#{$i}  {margin: $margin;}
+    .ml-#{$i} {margin-left: $margin;}
+    .mr-#{$i} {margin-right: $margin;}
+    .mt-#{$i} {margin-top: $margin;}
+    .mb-#{$i} {margin-bottom: $margin;}
+    .mx-#{$i} {margin-left: $margin; margin-right: $margin;}
+    .my-#{$i} {margin-top: $margin; margin-bottom: $margin;}
+    .m-n#{$i}  {margin: -$margin;}
+    .ml-n#{$i} {margin-left: -$margin;}
+    .mr-n#{$i} {margin-right: -$margin;}
+    .mt-n#{$i} {margin-top: -$margin;}
+    .mb-n#{$i} {margin-bottom: -$margin;}
+    .mx-n#{$i} {margin-left: -$margin; margin-right: -$margin;}
+    .my-n#{$i} {margin-top: -$margin; margin-bottom: -$margin;}
+  }
+}
+@include margin-classes;
+
+@mixin padding-classes {
+  @for $i from 1 through $sizes {
+    $padding: $i * 0.25rem;
+    .p-a {margin: auto;}
+    .p-#{$i} {padding: $padding;}
+    .pl-#{$i} {padding-left: $padding;}
+    .pr-#{$i} {padding-right: $padding;}
+    .pt-#{$i} {padding-top: $padding;}
+    .pb-#{$i} {padding-bottom: $padding;}
+    .px-#{$i} {padding-left: $padding; padding-right: $padding;}
+    .py-#{$i} {padding-top: $padding; padding-bottom: $padding;}
+    .pl-n#{$i} {padding-left: -$padding;}
+    .pr-n#{$i} {padding-right: -$padding;}
+    .pt-n#{$i} {padding-top: -$padding;}
+    .pb-n#{$i} {padding-bottom: -$padding;}
+    .px-n#{$i} {padding-left: -$padding; padding-right: -$padding;}
+    .py-n#{$i} {padding-top: -$padding; padding-bottom: -$padding;}
+  }
+}
+@include padding-classes;
+
+.icon-xs {
+    height: 1rem;
+    line-height: 1rem;
+    width: 1rem;
+}
