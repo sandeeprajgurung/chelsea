@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="./pages/settings.html" aria-expanded="false">
+                        <a class="nav-link " href="./tag.php" aria-expanded="false">
                             Tags
                         </a>
                     </li>

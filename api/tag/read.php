@@ -9,7 +9,14 @@ $conn = $database->connection();
 
 $table_name = 'tags';
 $tag = new Tag($conn, $table_name);
-$result = $tag->read();
+if($_GET['action'] === 'view'){
+    $result = $tag->read();
+}
+
+if($_GET['action'] === 'viewLastRecord'){
+    $result = $tag->getLastRecord();
+}
+
 $num = $result->rowCount();
 
 if ($num > 0) {

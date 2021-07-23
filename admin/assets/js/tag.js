@@ -10,12 +10,12 @@ function checkName() {
 }
 
 function checkEditName(tableRowElementName) {
-    var name = tableRowElementName.find('.js-edit-category').val();
+    var name = tableRowElementName.find('.js-edit-tag').val();
     if (name.length > 0) {
         return true;
     } else {
         $(tableRowElementName.find("#edit-name-error")).html("Should contain only Characters");
-        $(tableRowElementName.find(".js-edit-category")).css("border", "2px solid #F90A0A");
+        $(tableRowElementName.find(".js-edit-tag")).css("border", "2px solid #F90A0A");
         return false;
     }
 }
@@ -39,8 +39,8 @@ function appendDataInTable(data) {
         if (typeof element !== undefined) {
             let html = '<tr>';
             html += `<td scope="row">
-                        <span class="category-name">` + element.name + `</span>
-                        <input type="hidden" id="category" name="name" class="form-control js-edit-category" value="` + element.name + `" required>
+                        <span class="tag-name">` + element.name + `</span>
+                        <input type="hidden" id="tag" name="name" class="form-control js-edit-tag" value="` + element.name + `" required>
                         <em id="edit-name-error" class="error help-block"></em>
                     </td>`;
             html += '<td class="action-elements">';
@@ -54,15 +54,15 @@ function appendDataInTable(data) {
             </button>`;
             html += ` </td>
             </tr>`;
-            $('.category-table-body').prepend(html)
+            $('.tag-table-body').prepend(html)
         }
     });
 }
 
-function showAllcategory() {
+function showAlltag() {
     $.ajax({
         contentType: "application/json; charset=utf-8",
-        url: "../api/category/read.php",
+        url: "../api/tag/read.php",
         type: "GET",
         data: {
             action: "view"
@@ -78,7 +78,7 @@ function showAllcategory() {
 function getLastRecord() {
     $.ajax({
         contentType: "application/json; charset=utf-8",
-        url: "../api/category/read.php",
+        url: "../api/tag/read.php",
         type: "GET",
         data: {
             action: "viewLastRecord"
@@ -92,16 +92,16 @@ function getLastRecord() {
 }
 
 $(document).ready(function () {
-    showAllcategory();
+    showAlltag();
 
-    $('.js-submit-category').click(function (e) {
+    $('.js-submit-tag').click(function (e) {
         e.preventDefault();
         if (checkName()) {
             const form_data = form_to_json('form');
             $.ajax({
                 type: 'POST',
                 contentType: "application/json; charset=utf-8",
-                url: '../api/category/create.php',
+                url: '../api/tag/create.php',
                 data: JSON.stringify(form_data),
                 dataType: 'json',
                 success: function (data) {
@@ -133,7 +133,7 @@ $(document).ready(function () {
                 type: 'DELETE',
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
-                url: '../api/category/delete.php',
+                url: '../api/tag/delete.php',
                 data: JSON.stringify(dataId),
                 success: function (data) {
                     tableRowElement.remove();
@@ -166,8 +166,8 @@ $(document).ready(function () {
                 </button>`;
         html += ` </td>`;
         const tableRowElement = $(this).parents("tr");
-        $(tableRowElement.find(".category-name")).show();
-        $(tableRowElement.find(".js-edit-category")).attr('type', 'hidden');
+        $(tableRowElement.find(".tag-name")).show();
+        $(tableRowElement.find(".js-edit-tag")).attr('type', 'hidden');
         $(tableRowElement.find('.action-elements').replaceWith(html));
         feather.replace();
     });
@@ -186,8 +186,8 @@ $(document).ready(function () {
                 </button>`;
         html += ` </td>`;
         const tableRowElement = $(this).parents("tr");
-        $(tableRowElement.find(".category-name")).hide();
-        $(tableRowElement.find(".js-edit-category")).attr('type', 'text');
+        $(tableRowElement.find(".tag-name")).hide();
+        $(tableRowElement.find(".js-edit-tag")).attr('type', 'text');
         $(tableRowElement.find('.action-elements').replaceWith(html));
         feather.replace();
     });
@@ -200,12 +200,12 @@ $(document).ready(function () {
             const tableRowElement = $(this).parents("tr");
             const updatedData = {
                 id: id,
-                name: tableRowElement.find('.js-edit-category').val(),
+                name: tableRowElement.find('.js-edit-tag').val(),
             };
             let html = '<tr>';
             html += `<td scope="row">
-                        <span class="category-name">` + updatedData.name + `</span>
-                        <input type="hidden" id="category" name="name" class="form-control js-edit-category" value="` + updatedData.name + `" required>
+                        <span class="tag-name">` + updatedData.name + `</span>
+                        <input type="hidden" id="tag" name="name" class="form-control js-edit-tag" value="` + updatedData.name + `" required>
                     </td>`;
             html += '<td class="action-elements">';
             html += `<button type="button" class="btn btn-warning js-edit-btn btn-sm mr-1" data-id="` + updatedData.id + `">
@@ -222,7 +222,7 @@ $(document).ready(function () {
                 type: 'PUT',
                 contentType: "application/json; charset=utf-8",
                 dataType: 'json',
-                url: '../api/category/update.php',
+                url: '../api/tag/update.php',
                 data: JSON.stringify(updatedData),
                 success: function (data) {
                     resetInputField();
