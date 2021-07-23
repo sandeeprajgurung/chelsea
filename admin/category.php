@@ -38,7 +38,7 @@ include_once '../config/partials/display_errors.php';
 
             <div class="card my-4">
                 <div class="card-body">
-                    <table class="table table-success table-striped">
+                    <table class="table table-hover table-success table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th scope="col">Title</th>

@@ -69,7 +69,7 @@
             </a>
             <div id="articlesSetting" class="collapse" data-bs-parent="#sideNavbar">
                 <ul class="nav flex-column">
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link " href="./category.php" aria-expanded="false">
                             Category
                         </a>
