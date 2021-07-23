@@ -10,7 +10,6 @@ function checkName() {
 }
 
 function checkEditName(name) {
-    console.log('name:', name);
     var name = name
     if (name.length > 0) {
         return true;
