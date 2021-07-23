@@ -9,7 +9,14 @@ $conn = $database->connection();
 
 $table_name = 'categories';
 $category = new Category($conn, $table_name);
-$result = $category->read();
+if($_GET['action'] === 'view'){
+    $result = $category->read();
+}
+
+if($_GET['action'] === 'viewLastRecord'){
+    $result = $category->getLastRecord();
+}
+
 $num = $result->rowCount();
 
 if ($num > 0) {

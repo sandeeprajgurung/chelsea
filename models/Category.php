@@ -48,6 +48,19 @@ class Category
         return false;
     }
 
+    public function getLastRecord(): object
+    {
+        $query = 'SELECT * FROM  ' . $this->table . ' ORDER BY id DESC LIMIT 1';
+        $statement = $this->conn->prepare($query);
+
+        if ($statement->execute()) {
+            return $statement;
+        }
+
+        printf("Error: %s.\n", $statement->error);
+        return false;
+    }
+
     public function update(): bool
     {
         $query = 'UPDATE ' . $this->table . ' SET name = :name WHERE id = :id';

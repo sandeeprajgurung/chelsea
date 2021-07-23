@@ -10,7 +10,7 @@ $connection = $database->connection();
 $table_name = 'categories';
 $category = new Category($connection, $table_name);
 
-$data = json_decode(file_get_contents("php://input"));
+$data = json_decode(file_get_contents("php://input"), false);
 $category->id = $data->id;
 
 if ($category->destroy()) {

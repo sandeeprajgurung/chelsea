@@ -10,7 +10,9 @@ $conn = $database->connection();
 $table_name = 'categories';
 $category = new Category($conn, $table_name);
 
-$data = json_decode(file_get_contents("php://input"));
+// if ($_SERVER["REQUEST_METHOD"] === "POST") {
+// }
+$data = json_decode(file_get_contents("php://input"), false);
 $category->name = $data->name;
 
 if ($category->create()) {

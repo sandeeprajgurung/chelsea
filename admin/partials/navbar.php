@@ -21,7 +21,7 @@
                 <i data-feather="layers" class="nav-icon icon-xs mr-2">
                 </i> Pages
             </a>
-            <div id="navPages" class="collapse " data-bs-parent="#sideNavbar">
+            <div id="navPages" class="collapse" data-bs-parent="#sideNavbar">
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link " href="./pages/profile.html">
@@ -58,6 +58,29 @@
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg> Dashboard
             </a>
+        </li>
+        <li class="nav-item">
+            <div class="navbar-heading">Settings</div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link has-arrow collapsed" data-bs-toggle="collapse" data-bs-target="#articlesSetting" aria-expanded="false" aria-controls="articlesSetting">
+                <i data-feather="layers" class="nav-icon icon-xs mr-2">
+                </i> Articles
+            </a>
+            <div id="articlesSetting" class="collapse" data-bs-parent="#sideNavbar">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link " href="./category.php" aria-expanded="false">
+                            Category
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="./pages/settings.html" aria-expanded="false">
+                            Tags
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </li>
     </ul>
 </div>
